@@ -1,0 +1,520 @@
+# REVIEW ALGORITMA DAN PEMROGRAMAN 1 (GOLANG)
+
+Modul ini membahas **dasar-dasar bahasa Go (Golang)** mulai dari struktur program, tipe data, variabel, operator, hingga latihan logika dasar.
+
+Target setelah belajar modul ini:
+
+* Memahami struktur program Go
+* Bisa membuat dan menjalankan program
+* Memahami variabel, tipe data, operator
+* Mengerti pointer dasar
+* Bisa membuat program sederhana berbasis input-output
+
+---
+
+## 2.1 ANATOMI PROGRAM GO
+
+Bayangkan program Go seperti **surat resmi**.
+Setiap surat resmi punya bagian wajib. Begitu juga Go.
+
+Struktur dasar program Go:
+
+```go
+package main
+import "fmt"
+
+func main() {
+    fmt.Println("Halo Dunia")
+}
+```
+
+Mari kita bedah satu per satu.
+
+---
+
+## 1️. package main → "Kop Surat"
+
+```go
+package main
+```
+
+Artinya:
+
+* Ini adalah **program utama**
+* File ini bisa langsung dijalankan
+
+Jika bukan `main`, maka program tidak bisa dieksekusi langsung.
+
+---
+
+## 2️. import → "Meminjam Alat"
+
+```go
+import "fmt"
+```
+
+`fmt` adalah library bawaan Go untuk:
+
+* Menampilkan teks (Output)
+* Menerima input dari keyboard
+
+Tanpa `import`, kita tidak bisa menggunakan alat tersebut.
+
+---
+
+## 3️. func main() → "Isi Surat"
+
+```go
+func main() {
+    // semua perintah ditulis di sini
+}
+```
+
+Semua kode yang ingin dijalankan harus berada di dalam `{ }`.
+
+Program selalu mulai dari fungsi `main()`.
+
+---
+
+## Komentar (Catatan untuk Programmer)
+
+Komentar adalah tulisan yang **tidak dibaca komputer**, hanya untuk manusia.
+
+### Komentar satu baris
+
+```go
+// Ini komentar satu baris
+```
+
+### Komentar banyak baris
+
+```go
+/*
+Ini komentar
+yang panjang
+*/
+```
+
+Komentar sangat penting saat mengajar atau bekerja tim.
+
+---
+
+## Koding, Kompilasi, dan Eksekusi
+
+Go adalah bahasa **compiled**.
+
+Artinya:
+
+1. Kode diterjemahkan dulu menjadi aplikasi
+2. Baru bisa dijalankan
+
+## Langkah Menjalankan Program
+
+### 1️⃣ Tulis kode
+
+Simpan dengan ekstensi `.go`
+Contoh: `hello.go`
+
+### 2️⃣ Build (Kompilasi)
+
+Buka Terminal:
+
+```bash
+go build hello.go
+```
+
+Jika sukses:
+
+* Akan muncul file `hello.exe` (Windows)
+
+### 3️. Jalankan Program
+
+```bash
+hello.exe
+```
+
+atau
+
+```bash
+./hello
+```
+
+Jangan klik dua kali file exe dari folder. Jalankan lewat terminal.
+
+---
+
+### Perintah Penting di Terminal
+
+| Perintah | Fungsi                     |
+| -------- | -------------------------- |
+| go build | Mengubah .go jadi .exe     |
+| go fmt   | Merapikan kode otomatis    |
+| go clean | Menghapus file hasil build |
+
+---
+
+## 2.2 TIPE DATA DAN INSTRUKSI DASAR
+
+Sekarang masuk ke konsep inti pemrograman.
+
+---
+
+## 1️. Variabel dan Tipe Data
+
+Variabel adalah **kotak penyimpan data**.
+
+Contoh:
+
+```go
+var umur int = 20
+```
+
+Artinya:
+
+* Buat kotak bernama `umur`
+* Isinya angka bulat
+
+---
+
+### Jenis Tipe Data Dasar
+
+| Tipe      | Contoh | Fungsi           |
+| --------- | ------ | ---------------- |
+| int       | 10     | Bilangan bulat   |
+| float64   | 3.14   | Bilangan desimal |
+| bool      | true   | Benar/Salah      |
+| string    | "Halo" | Teks             |
+| byte/rune | 'A'    | Karakter         |
+
+---
+
+### Contoh Program
+
+```go
+package main
+import "fmt"
+
+func main() {
+    var nama string = "Budi"
+    var umur int = 20
+    var lulus bool = true
+    
+    fmt.Println("Nama:", nama)
+    fmt.Println("Umur:", umur)
+    fmt.Println("Lulus:", lulus)
+}
+```
+
+---
+
+## 2️. Cara Membuat Variabel
+
+Ada 3 cara:
+
+### Cara 1 (Panjang)
+
+```go
+var nama string
+nama = "Budi"
+```
+
+### Cara 2 (Langsung Isi)
+
+```go
+var nama string = "Budi"
+```
+
+### Cara 3 (Paling Sering Dipakai)
+
+```go
+nama := "Budi"
+```
+
+Go otomatis menebak tipe datanya.
+
+---
+
+## 3️. Nilai Default (Jika Tidak Diisi)
+
+Jika tidak diberi nilai:
+
+| Tipe   | Nilai Awal |
+| ------ | ---------- |
+| int    | 0          |
+| float  | 0.0        |
+| bool   | false      |
+| string | ""         |
+
+Contoh:
+
+```go
+var dompet int
+fmt.Println(dompet) // 0
+```
+
+---
+
+## 4️. Operator
+
+### Operator Matematika
+
+| Simbol | Fungsi    |
+| ------ | --------- |
+| +      | Tambah    |
+| -      | Kurang    |
+| *      | Kali      |
+| /      | Bagi      |
+| %      | Sisa bagi |
+
+Contoh:
+
+```go
+10 % 3 // hasilnya 1
+```
+
+---
+
+### Operator Perbandingan
+
+| Simbol | Arti        |
+| ------ | ----------- |
+| ==     | Sama dengan |
+| !=     | Tidak sama  |
+| >      | Lebih besar |
+| <      | Lebih kecil |
+
+Hasilnya selalu `true` atau `false`.
+
+---
+
+### Operator Logika
+
+| Simbol | Arti      |   |      |
+| ------ | --------- | - | ---- |
+| &&     | DAN       |   |      |
+| !      | KEBALIKAN |   |      |
+
+Contoh:
+
+```go
+true && false // hasilnya false
+```
+
+---
+
+## 5️. Casting (Aturan Ketat Go)
+
+Go sangat disiplin.
+
+Ini SALAH:
+
+```go
+10 + 3.14
+```
+
+Ini BENAR:
+
+```go
+float64(10) + 3.14
+```
+
+Tipe data harus sama sebelum dihitung.
+
+---
+
+## 6. Pointer (Alamat Memori Dasar)
+
+Bayangkan variabel seperti rumah.
+
+* `nama` → isi rumah
+* `&nama` → alamat rumah
+* `*alamat` → isi dari alamat itu
+
+Contoh:
+
+```go
+kotak := "Sepatu"
+
+fmt.Println(kotak)     // Isi
+fmt.Println(&kotak)    // Alamat memori
+```
+
+Pointer sangat penting saat belajar struktur data nanti.
+
+---
+
+## 7️. Input dan Output
+
+### Output
+
+```go
+fmt.Println("Halo")
+fmt.Printf("%v", nilai)
+```
+
+---
+
+### Input
+
+WAJIB pakai `&`
+
+```go
+var angka int
+fmt.Scanln(&angka)
+```
+
+Kenapa pakai `&`?
+
+Karena kita memberi alamat memori agar data bisa disimpan ke variabel tersebut.
+
+---
+
+## 8️. Konstanta
+
+Nilai yang tidak boleh berubah.
+
+```go
+const PI = 3.14
+```
+
+Digunakan untuk nilai tetap seperti:
+
+* π
+* pajak
+* diskon tetap
+
+---
+
+# CONTOH PROGRAM LENGKAP
+
+```go
+package main
+import "fmt"
+
+func main() {
+    const PI = 3.14
+    var jariJari float64
+
+    fmt.Print("Masukkan jari-jari: ")
+    fmt.Scanln(&jariJari)
+
+    luas := PI * jariJari * jariJari
+
+    fmt.Println("Luas lingkaran:", luas)
+}
+```
+
+---
+
+# TUGAS & LATIHAN PRAKTIK
+
+---
+
+## Bagian 1 – Riset
+
+Cari tahu:
+
+* Pascal → Compiled / Interpreted?
+* C++ → ?
+* Java → ?
+* Python → ?
+
+Tujuan: Memahami perbedaan jenis bahasa pemrograman.
+
+---
+
+## Bagian 2 – Latihan Logika
+
+---
+
+### Soal 1 – Analisis Program
+
+Program ini melakukan apa?
+
+```go
+temp = satu
+satu = dua
+dua = tiga
+tiga = temp
+```
+
+Petunjuk:
+Perhatikan alur perpindahan data.
+
+---
+
+### Soal 2 – Tahun Kabisat
+
+Syarat:
+
+* Habis dibagi 400
+  ATAU
+* Habis dibagi 4 dan tidak habis dibagi 100
+
+Contoh:
+
+* 2016 → true
+* 2018 → false
+
+---
+
+### Soal 3 – Hitung Bola
+
+Rumus:
+
+* Volume = 4/3 × π × r³
+* Luas = 4 × π × r²
+
+Gunakan:
+
+```
+PI = 3.1415926535
+```
+
+---
+
+### Soal 4 – Konversi Suhu
+
+Rumus:
+
+* F = (C × 9/5) + 32
+* R = C × 4/5
+* K = C + 273.15
+
+---
+
+### Soal 5 – ASCII
+
+1. Ubah angka menjadi huruf
+2. Ubah huruf ke huruf setelahnya
+
+Gunakan:
+
+```go
+fmt.Scanf("%c", &var)
+fmt.Printf("%c", var)
+```
+
+---
+
+## KESIMPULAN MODUL 2
+
+Setelah memahami modul ini, kamu sudah menguasai:
+
+* Struktur dasar program Go
+* Cara menjalankan program
+* Variabel dan tipe data
+* Operator matematika & logika
+* Casting
+* Pointer dasar
+* Input dan output
+
+Ini adalah fondasi sebelum masuk ke:
+
+* Percabangan (if)
+* Perulangan (for)
+* Array
+* Struct
+* Function lanjutan
+
+---
