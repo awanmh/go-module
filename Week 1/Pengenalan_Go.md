@@ -110,12 +110,12 @@ Artinya:
 
 ## Langkah Menjalankan Program
 
-### 1️⃣ Tulis kode
+### 1️. Tulis kode
 
 Simpan dengan ekstensi `.go`
 Contoh: `hello.go`
 
-### 2️⃣ Build (Kompilasi)
+### 2️. Build (Kompilasi)
 
 Buka Terminal:
 
@@ -269,7 +269,41 @@ fmt.Println(dompet) // 0
 Contoh:
 
 ```go
-10 % 3 // hasilnya 1
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var a, b int
+
+	// Mengisi nilai a dan b
+	a = 20
+	b = 6
+
+	// 1. Penambahan (+)
+	hasilTambah := a + b
+	fmt.Printf("%d + %d = %v\n", a, b, hasilTambah)
+
+	// 2. Pengurangan (-)
+	hasilKurang := a - b
+	fmt.Printf("%d - %d = %v\n", a, b, hasilKurang)
+
+	// 3. Perkalian (*)
+	hasilKali := a * b
+	fmt.Printf("%d * %d = %v\n", a, b, hasilKali)
+
+	// 4. Pembagian (/)
+	// Perhatikan: Karena a dan b adalah int, maka hasilnya juga int (dibulatkan ke bawah)
+	hasilBagi := a / b
+	fmt.Printf("%d / %d = %v\n", a, b, hasilBagi)
+
+	// 5. Modulo / Sisa Bagi (%)
+	// Sisa bagi dari 20 dibagi 6 adalah 2 (karena 6 * 3 = 18, 20 - 18 = 2)
+	hasilSisaBagi := a % b
+	fmt.Printf("%d %% %d = %v\n", a, b, hasilSisaBagi)
+}
 ```
 
 ---
@@ -285,6 +319,33 @@ Contoh:
 
 Hasilnya selalu `true` atau `false`.
 
+contoh code : 
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var angka1, angka2, angka3, angka4, angka5 bool
+	var a, b int
+
+	a = 10
+	b = 2
+
+	angka1 = a != b
+	angka2 = a == b
+	angka3 = a > b
+	angka4 = a < b
+	angka5 = a >= b
+
+	fmt.Println(angka1)
+	fmt.Println(angka2)
+	fmt.Println(angka3)
+	fmt.Println(angka4)
+	fmt.Println(angka5)
+}
+```
+
 ---
 
 ### Operator Logika
@@ -298,6 +359,25 @@ Contoh:
 
 ```go
 true && false // hasilnya false
+```
+
+contoh code :
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a, b bool
+	var angka bool
+
+	a = true
+	b = false
+
+	angka = a && b
+
+	fmt.Println(angka)
+}
 ```
 
 ---
@@ -316,6 +396,27 @@ Ini BENAR:
 
 ```go
 float64(10) + 3.14
+```
+
+contoh code :
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a int = 10
+	var b float64 = 10.5
+	var angka float64
+
+	// INI AKAN ERROR (mismatched types int and float64)
+	angka = a + b 
+
+	// INI BARU BENAR
+	angka = float64(a) + b
+
+	fmt.Println(angka)
+}
 ```
 
 Tipe data harus sama sebelum dihitung.
@@ -367,6 +468,39 @@ Kenapa pakai `&`?
 
 Karena kita memberi alamat memori agar data bisa disimpan ke variabel tersebut.
 
+contoh code :
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	// 1. OUPUT (Menampilkan teks)
+	fmt.Println("Halo, selamat datang di program biodata!")
+
+	// Menyiapkan variabel untuk menampung input pengguna
+	var nama string
+	var umur int
+
+	// 2. INPUT NAMA
+	fmt.Print("Masukkan nama Anda: ")
+	// WAJIB pakai & karena kita memasukkan data ke alamat memori variabel 'nama'
+	fmt.Scanln(&nama) 
+
+	// 3. INPUT UMUR
+	fmt.Print("Masukkan umur Anda: ")
+	// WAJIB pakai & untuk variabel 'umur'
+	fmt.Scanln(&umur)
+
+	// 4. OUTPUT HASIL 
+	// Kita bisa menangkap nilainya kembali untuk dicetak
+	fmt.Println("====================")
+	fmt.Printf("Halo %s!\n", nama)
+	fmt.Printf("Wah, usiamu sekarang %v tahun ya.\n", umur)
+}
+```
 ---
 
 ## 8️. Konstanta
@@ -516,5 +650,6 @@ Ini adalah fondasi sebelum masuk ke:
 * Array
 * Struct
 * Function lanjutan
+
 
 ---
