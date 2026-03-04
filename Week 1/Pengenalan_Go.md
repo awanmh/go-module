@@ -653,3 +653,372 @@ Ini adalah fondasi sebelum masuk ke:
 
 
 ---
+
+## 9️. PERCABANGAN (IF – ELSE)
+
+### Apa itu Percabangan?
+
+Percabangan adalah **pengambilan keputusan dalam program**.
+
+Bayangkan seperti persimpangan jalan:
+
+* Jika hujan → pakai payung
+* Jika tidak → tidak perlu payung
+
+Dalam program:
+Komputer akan **memilih aksi berdasarkan kondisi**.
+
+---
+
+### 1️. Struktur Dasar If
+
+```go
+if kondisi {
+    // dijalankan jika kondisi true
+}
+```
+
+Contoh:
+
+```go
+package main
+import "fmt"
+
+func main() {
+    umur := 20
+
+    if umur >= 17 {
+        fmt.Println("Boleh membuat KTP")
+    }
+}
+```
+
+Jika kondisi `umur >= 17` bernilai `true`, maka perintah dijalankan.
+
+---
+
+### 2️. If – Else
+
+Digunakan jika ada dua kemungkinan.
+
+```go
+if kondisi {
+    // jika true
+} else {
+    // jika false
+}
+```
+
+Contoh:
+
+```go
+package main
+import "fmt"
+
+func main() {
+    nilai := 60
+
+    if nilai >= 75 {
+        fmt.Println("Lulus")
+    } else {
+        fmt.Println("Tidak Lulus")
+    }
+}
+```
+
+---
+
+### 3️. If – Else If – Else
+
+Jika kondisi lebih dari dua.
+
+```go
+if kondisi1 {
+    ...
+} else if kondisi2 {
+    ...
+} else {
+    ...
+}
+```
+
+Contoh Penilaian:
+
+```go
+package main
+import "fmt"
+
+func main() {
+    nilai := 85
+
+    if nilai >= 90 {
+        fmt.Println("Grade A")
+    } else if nilai >= 75 {
+        fmt.Println("Grade B")
+    } else if nilai >= 60 {
+        fmt.Println("Grade C")
+    } else {
+        fmt.Println("Grade D")
+    }
+}
+```
+
+---
+
+### 4️. If dengan Operator Logika
+
+Kita bisa gabungkan kondisi dengan:
+
+| Operator | Fungsi |
+| -------- | ------ |
+| &&       | DAN    |
+| ||       | ATAU   |
+| !        | Negasi |
+
+Contoh Tahun Kabisat:
+
+```go
+package main
+import "fmt"
+
+func main() {
+    tahun := 2024
+
+    if (tahun % 400 == 0) || (tahun % 4 == 0 && tahun % 100 != 0) {
+        fmt.Println("Tahun Kabisat")
+    } else {
+        fmt.Println("Bukan Tahun Kabisat")
+    }
+}
+```
+
+Ini contoh nyata penggunaan logika kompleks.
+
+---
+
+## 10️. PERULANGAN (LOOPING)
+
+### Apa itu Perulangan?
+
+Perulangan adalah **mengulang perintah secara otomatis**.
+
+Bayangkan:
+
+Daripada menulis:
+
+```go
+fmt.Println("Halo")
+fmt.Println("Halo")
+fmt.Println("Halo")
+```
+
+Kita cukup gunakan perulangan.
+
+---
+
+### Di Go, hanya ada SATU keyword:
+
+## `for`
+
+Tapi bisa digunakan dalam beberapa bentuk.
+
+---
+
+### 1️. For Dasar (Seperti Bahasa C)
+
+Struktur:
+
+```go
+for inisialisasi; kondisi; perubahan {
+    // kode yang diulang
+}
+```
+
+Contoh:
+
+```go
+package main
+import "fmt"
+
+func main() {
+    for i := 1; i <= 5; i++ {
+        fmt.Println("Perulangan ke-", i)
+    }
+}
+```
+
+Penjelasan:
+
+* `i := 1` → mulai dari 1
+* `i <= 5` → berhenti saat lebih dari 5
+* `i++` → tambah 1 setiap putaran
+
+Output:
+
+```
+Perulangan ke- 1
+Perulangan ke- 2
+Perulangan ke- 3
+Perulangan ke- 4
+Perulangan ke- 5
+```
+
+---
+
+### 2️. For sebagai While
+
+Go tidak punya `while`, tapi bisa dibuat seperti ini:
+
+```go
+i := 1
+
+for i <= 5 {
+    fmt.Println(i)
+    i++
+}
+```
+
+Selama kondisi `i <= 5` benar, maka terus berulang.
+
+---
+
+### 3️. Perulangan Tanpa Henti (Infinite Loop)
+
+```go
+for {
+    fmt.Println("Hello")
+}
+```
+
+Ini akan berjalan terus tanpa berhenti.
+
+Untuk menghentikan, gunakan `break`.
+
+---
+
+### 4️. Break dan Continue
+
+### Break → Menghentikan perulangan
+
+```go
+for i := 1; i <= 10; i++ {
+    if i == 5 {
+        break
+    }
+    fmt.Println(i)
+}
+```
+
+Berhenti saat i = 5.
+
+---
+
+### Continue → Lewati satu putaran
+
+```go
+for i := 1; i <= 5; i++ {
+    if i == 3 {
+        continue
+    }
+    fmt.Println(i)
+}
+```
+
+Angka 3 tidak dicetak.
+
+---
+
+## 5️. Studi Kasus – Menjumlahkan Angka
+
+Program menjumlahkan 1 sampai 5:
+
+```go
+package main
+import "fmt"
+
+func main() {
+    total := 0
+
+    for i := 1; i <= 5; i++ {
+        total += i
+    }
+
+    fmt.Println("Total:", total)
+}
+```
+
+Hasil:
+1 + 2 + 3 + 4 + 5 = 15
+
+---
+
+## 11️. Menggabungkan Percabangan dan Perulangan
+
+Contoh: Cetak angka genap dari 1–10
+
+```go
+package main
+import "fmt"
+
+func main() {
+    for i := 1; i <= 10; i++ {
+        if i % 2 == 0 {
+            fmt.Println(i)
+        }
+    }
+}
+```
+
+Program akan:
+
+1. Mengulang dari 1 sampai 10
+2. Mengecek apakah angka genap
+3. Jika ya → tampilkan
+
+---
+
+## 12️. Latihan Tambahan
+
+### 1️. Cetak bintang segitiga
+
+Output:
+
+```
+*
+**
+***
+****
+*****
+```
+
+Petunjuk: Gunakan nested loop.
+
+---
+
+### 2️. Tebak Angka
+
+Buat program:
+
+* Komputer menyimpan angka (misal 7)
+* User menebak
+* Jika salah → tampilkan "Coba Lagi"
+* Jika benar → "Selamat"
+
+---
+
+## KESIMPULAN
+
+Sekarang kamu sudah memahami:
+
+✔ Percabangan (if, else, else if)
+✔ Operator logika dalam keputusan
+✔ Perulangan dengan for
+✔ Break dan continue
+✔ Menggabungkan logika dan loop
+
+Ini adalah fondasi utama sebelum masuk ke:
+
+* Array & Slice
+* Struct
+* Function lanjutan
+* Algoritma lebih kompleks
