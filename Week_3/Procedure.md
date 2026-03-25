@@ -18,6 +18,29 @@ Setelah mempelajari modul ini, mahasiswa mampu:
 
 **Prosedur** adalah kumpulan instruksi yang dibungkus menjadi satu fungsi khusus **tanpa nilai kembalian (return)**.
 
+Flownya :
+```
+        ┌───────────────┐
+        │     INPUT     │
+        │ (Scan / nilai)│
+        └───────┬───────┘
+                │ parameter aktual
+                ▼
+        ┌──────────────┐
+        │   PROSEDUR   │
+        │ (parameter   │
+        │   formal)    │
+        └───────┬──────┘
+                │ proses (loop, hitung, print)
+                ▼
+        ┌───────────────┐
+        │    OUTPUT     │
+        │ (print / ubah │
+        │   variabel)   │
+        └───────────────┘
+
+```
+
 Tujuan utama:
 
 - Mengurangi kompleksitas program
