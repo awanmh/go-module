@@ -305,7 +305,7 @@ func tambah(a int, b int) {
 
 #### 2. Parameter Aktual
 
-👉 Yang dikirim saat pemanggilan
+Yang dikirim saat pemanggilan
 
 ```go
 tambah(5, 3)
