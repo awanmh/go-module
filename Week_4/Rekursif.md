@@ -22,7 +22,7 @@ Setelah mempelajari modul ini, mahasiswa mampu:
 flownya :
 ```
         ┌──────────────┐
-        │    INPUT      │
+        │    INPUT     │
         └───────┬──────┘
                 ▼
         ┌──────────────┐
