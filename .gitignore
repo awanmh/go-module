@@ -1,0 +1,25 @@
+# Binaries and executables
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test and temporary runner files
+tempCodeRunnerFile.go
+*.tmp
+*.log
+
+# Editor and IDE directories
+.vscode/
+.idea/
+.markdown-collab/
+
+# OS specific files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Root administrative and draft documents
+/*.pdf
+/*.xlsx
